@@ -135,10 +135,6 @@ app.post("/api/contact", async (req, res) => {
   }
 });
 
-// INSTAGRAM & FACEBOOK (Temporarily commented so server won't crash)
-// app.use("/api/instagram", instagramRoutes);
-// app.use("/api/facebook", facebookRoutes);
-
 // 404 HANDLER
 app.use((req, res) => {
   res.status(404).json({
@@ -161,3 +157,5 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Backend server running on port ${PORT}`);
 });
+
+export default app;
