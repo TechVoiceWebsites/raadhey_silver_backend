@@ -48,9 +48,9 @@ app.use(
 
 app.use(express.json());
 
-// ROOT
+// ROOT ROUTE
 app.get("/", (req, res) => {
-  res.json({
+  res.status(200).json({
     success: true,
     message: "Raadhey Silvers Backend is running",
   });
@@ -58,7 +58,7 @@ app.get("/", (req, res) => {
 
 // HEALTH CHECK
 app.get("/api/health", (req, res) => {
-  res.json({
+  res.status(200).json({
     success: true,
     message: "Backend healthy",
   });
@@ -82,12 +82,12 @@ app.post("/api/contact", async (req, res) => {
       from: `${name} (Raadhey Silvers) <contact@raadheysilvers.in>`,
       to: ["techvoicewebsitedevelopment@gmail.com"],
       replyTo: email, // CamelCase for Resend SDK
-      subject: `💎 New Enquiry from: ${name} (${interest})`,
+      subject: `💎 New Jewellery Enquiry: ${name} (${interest})`,
       html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #2D1457; max-width: 600px; margin: auto; padding: 24px; border: 1px solid #E9E5FF; border-radius: 16px; background-color: #FAF8FF;">
           <div style="border-bottom: 2px solid #8B5CF6; padding-bottom: 12px; margin-bottom: 20px;">
             <h2 style="color: #4A2F8C; margin: 0; font-size: 22px;">New Customer Enquiry</h2>
-            <p style="color: #78716C; margin: 5px 0 0 0; font-size: 13px;">Raadhey Silvers - Enquiry Form</p>
+            <p style="color: #78716C; margin: 5px 0 0 0; font-size: 13px;">Raadhey Silvers - Website Enquiry Form</p>
           </div>
 
           <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
@@ -115,7 +115,7 @@ app.post("/api/contact", async (req, res) => {
           </div>
 
           <div style="margin-top: 25px; padding-top: 15px; border-top: 1px solid #E5E1FF; text-align: center;">
-            <p style="font-size: 12px; color: #9CA3AF; margin: 0;">This email was automatically generated from the contact form.</p>
+            <p style="font-size: 12px; color: #9CA3AF; margin: 0;">This enquiry was submitted via raadheysilvers.in contact form.</p>
           </div>
         </div>
       `,
@@ -153,9 +153,12 @@ app.use((err, req, res, next) => {
   });
 });
 
-// START SERVER
-app.listen(PORT, () => {
-  console.log(`Backend server running on port ${PORT}`);
-});
+// START SERVER (Local-la mattum run aagum, Vercel-la conflict varaadhu)
+if (process.env.NODE_ENV !== "production") {
+  app.listen(PORT, () => {
+    console.log(`Backend server running on port ${PORT}`);
+  });
+}
 
+// VERCEL SERVERLESS EXPORT
 export default app;
