@@ -80,14 +80,14 @@ app.post("/api/contact", async (req, res) => {
     const data = await resend.emails.send({
       // Verified custom domain sender
       from: `${name} <contact@raadheysilvers.in>`,
-      to: ["techvoicewebsitedevelopment@gmail.com"],
+      to: ["contact@raadheysilvers.in"],
       replyTo: email, // CamelCase for Resend SDK
       subject: `💎 New Jewellery Enquiry: ${name} (${interest})`,
       html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #2D1457; max-width: 600px; margin: auto; padding: 24px; border: 1px solid #E9E5FF; border-radius: 16px; background-color: #FAF8FF;">
           <div style="border-bottom: 2px solid #8B5CF6; padding-bottom: 12px; margin-bottom: 20px;">
             <h2 style="color: #4A2F8C; margin: 0; font-size: 22px;">New Customer Enquiry</h2>
-            <p style="color: #78716C; margin: 5px 0 0 0; font-size: 13px;">Raadhey Silvers - Website Enquiry Form</p>
+            <p style="color: #78716C; margin: 5px 0 0 0; font-size: 13px;">Raadhey Silvers - Enquiry Form</p>
           </div>
 
           <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
