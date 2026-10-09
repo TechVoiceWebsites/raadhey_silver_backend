@@ -79,7 +79,7 @@ app.post("/api/contact", async (req, res) => {
   try {
     const data = await resend.emails.send({
       // Verified custom domain sender
-      from: `${name} (Raadhey Silvers) <contact@raadheysilvers.in>`,
+      from: `${name} <contact@raadheysilvers.in>`,
       to: ["techvoicewebsitedevelopment@gmail.com"],
       replyTo: email, // CamelCase for Resend SDK
       subject: `💎 New Jewellery Enquiry: ${name} (${interest})`,
